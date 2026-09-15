@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VyaparSathi — AI Business Advisory for India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ╔═══════════════════════════════════════════════════════╗
+     ║              LANDING PAGE                            ║
+     ╚═══════════════════════════════════════════════════════╝ -->
+<div id="landing-screen">
+  <!-- Navbar -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="#">
+        <div class="logo-icon">🌿</div>
+        <div class="logo-text">Vyapar<span>Sathi</span></div>
+      </a>
+      <nav class="nav-links hide-mobile">
+        <a href="#">Home</a>
+        <a href="#" onclick="showOnboarding()">Explore Opportunities</a>
+        <a href="#" onclick="showOnboarding()">My Business</a>
+        <a href="#" onclick="showOnboarding()">Schemes</a>
+        <a href="#" onclick="showOnboarding()">Community</a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-picker">
+          <button class="lang-picker-btn" onclick="toggleLangDropdown()">
+            🌐 <span id="lang-label">English</span> ▾
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown">
+            <button class="lang-option active" onclick="setLang('en','English')">English</button>
+            <button class="lang-option" onclick="setLang('hi','हिन्दी')">हिन्दी (Hindi)</button>
+            <button class="lang-option" onclick="setLang('bn','বাংলা')">বাংলা (Bengali)</button>
+            <button class="lang-option" onclick="setLang('en','தமிழ்')">தமிழ் (Tamil)</button>
+            <button class="lang-option" onclick="setLang('en','తెలుగు')">తెలుగు (Telugu)</button>
+            <button class="lang-option" onclick="setLang('en','मराठी')">मराठी (Marathi)</button>
+            <button class="lang-option" onclick="setLang('en','ગુજરાતી')">ગુજરાતી (Gujarati)</button>
+            <button class="lang-option" onclick="setLang('en','ಕನ್ನಡ')">ಕನ್ನಡ (Kannada)</button>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="showDashboard()">Login</button>
+        <button class="btn btn-primary btn-sm" onclick="showOnboarding()">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section>
+    <div class="hero">
+      <div>
+        <div class="hero-kicker">✨ <span id="land-tag">AI-powered · Made for Bharat</span></div>
+        <h1 id="hero-h1">
+          Your AI Partner for <span class="accent">Starting</span> and <span class="accent">Growing</span> a Business
+        </h1>
+        <p id="hero-sub">Discover the right business opportunity, plan your finances, find suitable government schemes, and grow with AI-powered guidance.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary btn-lg" onclick="showOnboarding()">
+            <span id="cta-primary">Find My Best Business</span> →
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="showDashboard()">
+            <span id="cta-secondary">Check Business Health</span>
+          </button>
+        </div>
+        <div class="trust-row">
+          <span class="trust-item"><span class="trust-icon">🛡️</span> <span id="trust1">Trusted guidance</span></span>
+          <span class="trust-item"><span class="trust-icon">🌐</span> <span id="trust2">8+ Indian languages</span></span>
+          <span class="trust-item"><span class="trust-icon">₹</span> <span id="trust3">Scheme matching</span></span>
+        </div>
+      </div>
+
+      <!-- Dashboard preview card -->
+      <div style="position:relative; padding-bottom: 28px;">
+        <div class="card preview-card">
+          <div class="preview-score-header">
+            <div>
+              <div class="preview-score-label">Best Opportunity Score</div>
+              <div class="preview-score-val font-display">87<span>/100</span></div>
+            </div>
+            <span class="chip chip-green">📍 Kolkata, WB</span>
+          </div>
+          <div class="preview-stats">
+            <div class="preview-stat">
+              <div class="preview-stat-icon" style="color:#2563eb">📊</div>
+              <div class="preview-stat-label">AI Feasibility</div>
+              <div class="preview-stat-val font-display">89/100</div>
+            </div>
+            <div class="preview-stat">
+              <div class="preview-stat-icon" style="color:#ea580c">₹</div>
+              <div class="preview-stat-label">Est. Profit</div>
+              <div class="preview-stat-val font-display">₹35K/mo</div>
+            </div>
+            <div class="preview-stat">
+              <div class="preview-stat-icon" style="color:#047857">📈</div>
+              <div class="preview-stat-label">Demand</div>
+              <div class="preview-stat-val font-display">High</div>
+            </div>
+            <div class="preview-stat">
+              <div class="preview-stat-icon" style="color:#7c3aed">🛡️</div>
+              <div class="preview-stat-label">Risk</div>
+              <div class="preview-stat-val font-display">Low</div>
+            </div>
+          </div>
+          <div class="preview-business">
+            <div class="preview-business-label">Suggested Business</div>
+            <div class="preview-business-name font-display">Organic Grocery Store</div>
+            <div class="preview-business-sub">Investment ₹2.00 L · Break-even 8 months</div>
+          </div>
+        </div>
+        <div class="preview-float hide-mobile">
+          <div class="preview-float-title">✨ AI Insight</div>
+          <p>Demand for affordable grocery delivery is rising in your area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey section -->
+  <section class="journey-section">
+    <div class="container">
+      <p class="section-kicker" id="journey-kicker">The VyaparSathi Journey</p>
+      <h2 class="section-title" id="journey-title">Right Opportunity → Plan → Funding → Guidance → Growth</h2>
+      <div class="grid-4">
+        <div class="card card-hover p-5">
+          <div style="width:44px;height:44px;background:var(--brand-50);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;">📍</div>
+          <h3 style="font-weight:700;color:var(--gray-900);margin-bottom:6px;">Right Opportunity</h3>
+          <p style="font-size:13px;color:var(--gray-600);line-height:1.6;">Hyper-local ideas ranked for your budget &amp; skills.</p>
+        </div>
+        <div class="card card-hover p-5">
+          <div style="width:44px;height:44px;background:var(--blue-50);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;">📊</div>
+          <h3 style="font-weight:700;color:var(--gray-900);margin-bottom:6px;">Right Plan</h3>
+          <p style="font-size:13px;color:var(--gray-600);line-height:1.6;">AI feasibility score &amp; a ready business plan.</p>
+        </div>
+        <div class="card card-hover p-5">
+          <div style="width:44px;height:44px;background:var(--orange-50);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;">₹</div>
+          <h3 style="font-weight:700;color:var(--gray-900);margin-bottom:6px;">Right Funding</h3>
+          <p style="font-size:13px;color:var(--gray-600);line-height:1.6;">Match with PMEGP, MUDRA &amp; the best loan mix.</p>
+        </div>
+        <div class="card card-hover p-5">
+          <div style="width:44px;height:44px;background:var(--purple-50);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;">📈</div>
+          <h3 style="font-weight:700;color:var(--gray-900);margin-bottom:6px;">Sustainable Growth</h3>
+          <p style="font-size:13px;color:var(--gray-600);line-height:1.6;">Health dashboard, simulator &amp; mentors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA section -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2 id="tagline">Sahi Marg, Sahi Saathi</h2>
+      <p id="cta-blurb">Start your business journey with an advisor that understands your area, your language and your budget.</p>
+      <button class="btn btn-secondary btn-lg" onclick="showOnboarding()">
+        <span id="cta-primary-2">Find My Best Business</span> →
+      </button>
+    </div>
+    <p class="footer-note">© 2026 VyaparSathi · Built for the Smart India Hackathon · Eligibility should be verified with official sources.</p>
+  </section>
+</div>
+
+
+<!-- ╔═══════════════════════════════════════════════════════╗
+     ║              ONBOARDING                              ║
+     ╚═══════════════════════════════════════════════════════╝ -->
+<div id="onboarding-screen" style="display:none;min-height:100vh;background:linear-gradient(160deg,var(--brand-50) 0%,#fff 60%);display:none;align-items:center;justify-content:center;padding:40px 20px;">
+  <div class="ob-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <span class="ob-step-label" id="ob-step-label">Step 1 of 5</span>
+      <button class="btn btn-ghost btn-sm" onclick="showLanding()">✕ Exit</button>
+    </div>
+    <div class="ob-progress-bar"><div class="ob-progress-fill" id="ob-progress" style="width:20%"></div></div>
+
+    <!-- Step 0: User type -->
+    <div id="ob-step-0">
+      <h2>What brings you here?</h2>
+      <p class="sub">We'll tailor everything to your goal.</p>
+      <div class="ob-choice-grid">
+        <button class="ob-choice" onclick="selectChoice('usertype','start',this)">
+          <div class="ob-choice-emoji">🚀</div>
+          <div class="ob-choice-label">I want to start a business</div>
+          <div class="ob-choice-sub">Find the right opportunity for me</div>
+        </button>
+        <button class="ob-choice" onclick="selectChoice('usertype','own',this)">
+          <div class="ob-choice-emoji">🏪</div>
+          <div class="ob-choice-label">I already own a business</div>
+          <div class="ob-choice-sub">Help me grow and stay healthy</div>
+        </button>
+      </div>
+      <div class="ob-footer">
+        <span></span>
+        <button class="btn btn-primary btn-md" onclick="obNext()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 1: Basic info -->
+    <div id="ob-step-1" style="display:none;">
+      <h2>Tell us about yourself</h2>
+      <p class="sub">Basic details help us localise your advice.</p>
+      <label class="ob-label">Your Name</label>
+      <input class="ob-input" id="ob-name" type="text" placeholder="e.g. Priya Sharma" />
+      <label class="ob-label">Location (City, State)</label>
+      <input class="ob-input" id="ob-location" type="text" placeholder="e.g. Kolkata, West Bengal" list="city-list" />
+      <datalist id="city-list">
+        <option value="Mumbai, Maharashtra"></option>
+        <option value="Delhi, Delhi"></option>
+        <option value="Bengaluru, Karnataka"></option>
+        <option value="Chennai, Tamil Nadu"></option>
+        <option value="Kolkata, West Bengal"></option>
+        <option value="Hyderabad, Telangana"></option>
+        <option value="Ahmedabad, Gujarat"></option>
+        <option value="Pune, Maharashtra"></option>
+        <option value="Jaipur, Rajasthan"></option>
+        <option value="Lucknow, Uttar Pradesh"></option>
+        <option value="Surat, Gujarat"></option>
+        <option value="Kochi, Kerala"></option>
+        <option value="Chandigarh, Chandigarh"></option>
+        <option value="Bhopal, Madhya Pradesh"></option>
+        <option value="Patna, Bihar"></option>
+      </datalist>
+      <label class="ob-label">Age Range</label>
+      <select class="ob-input" id="ob-age">
+        <option value="">Select age range</option>
+        <option>18–25</option><option>26–35</option><option>36–45</option><option>46–60</option><option>60+</option>
+      </select>
+      <label class="ob-label">Preferred Language</label>
+      <select class="ob-input" id="ob-lang">
+        <option>English</option>
+        <option>हिन्दी (Hindi)</option>
+        <option>বাংলা (Bengali)</option>
+        <option>தமிழ் (Tamil)</option>
+        <option>తెలుగు (Telugu)</option>
+        <option>मराठी (Marathi)</option>
+        <option>ગુજરાતી (Gujarati)</option>
+        <option>ಕನ್ನಡ (Kannada)</option>
+      </select>
+      <div class="ob-footer">
+        <button class="btn btn-ghost btn-md" onclick="obBack()">← Back</button>
+        <button class="btn btn-primary btn-md" onclick="obNext()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Interests -->
+    <div id="ob-step-2" style="display:none;">
+      <h2>What are you good at?</h2>
+      <p class="sub">Pick the areas that interest you most.</p>
+      <div class="ob-interests" id="ob-interests">
+        <button class="ob-interest" onclick="toggleInterest('food',this)">🍳 Cooking / Food</button>
+        <button class="ob-interest" onclick="toggleInterest('tech',this)">💻 Technology</button>
+        <button class="ob-interest" onclick="toggleInterest('agri',this)">🌾 Agriculture</button>
+        <button class="ob-interest" onclick="toggleInterest('retail',this)">🛍️ Retail</button>
+        <button class="ob-interest" onclick="toggleInterest('services',this)">🛠️ Services</button>
+        <button class="ob-interest" onclick="toggleInterest('manufacturing',this)">🏭 Manufacturing</button>
+        <button class="ob-interest" onclick="toggleInterest('education',this)">📚 Education</button>
+        <button class="ob-interest" onclick="toggleInterest('beauty',this)">💇 Beauty &amp; Wellness</button>
+      </div>
+      <div class="ob-footer">
+        <button class="btn btn-ghost btn-md" onclick="obBack()">← Back</button>
+        <button class="btn btn-primary btn-md" onclick="obNext()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Budget -->
+    <div id="ob-step-3" style="display:none;">
+      <h2>How much can you invest?</h2>
+      <p class="sub">Choose a range or set your exact budget.</p>
+      <div class="budget-ranges" id="budget-ranges">
+        <button class="budget-option" onclick="selectBudget(50000,this)">Under ₹50K</button>
+        <button class="budget-option" onclick="selectBudget(150000,this)">₹50K – ₹1.5L</button>
+        <button class="budget-option selected" onclick="selectBudget(300000,this)">₹1.5L – ₹5L</button>
+        <button class="budget-option" onclick="selectBudget(1000000,this)">₹5L – ₹25L</button>
+        <button class="budget-option" onclick="selectBudget(5000000,this)">₹25L – ₹1 Cr</button>
+        <button class="budget-option" onclick="selectBudget(10000000,this)">Above ₹1 Cr</button>
+      </div>
+      <label class="ob-label">Custom budget (₹)</label>
+      <input class="ob-input" id="ob-budget-custom" type="number" min="1000" max="100000000" placeholder="e.g. 200000" oninput="customBudget(this.value)" />
+      <div class="ob-footer">
+        <button class="btn btn-ghost btn-md" onclick="obBack()">← Back</button>
+        <button class="btn btn-primary btn-md" onclick="obNext()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Involvement -->
+    <div id="ob-step-4" style="display:none;">
+      <h2>How will you run it?</h2>
+      <p class="sub">Your involvement shapes the recommendations.</p>
+      <div style="margin-bottom:20px;">
+        <p style="font-size:13px;font-weight:600;color:var(--gray-600);margin-bottom:8px;">On a time basis</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;" id="time-choices">
+          <button class="ob-choice" style="flex:1;min-width:120px;" onclick="selectChoice('time','fulltime',this)">
+            <div class="ob-choice-emoji">⏰</div>
+            <div class="ob-choice-label">Full-time</div>
+          </button>
+          <button class="ob-choice selected" style="flex:1;min-width:120px;" onclick="selectChoice('time','parttime',this)">
+            <div class="ob-choice-emoji">🕐</div>
+            <div class="ob-choice-label">Part-time</div>
+          </button>
+          <button class="ob-choice" style="flex:1;min-width:120px;" onclick="selectChoice('time','weekend',this)">
+            <div class="ob-choice-emoji">📅</div>
+            <div class="ob-choice-label">Weekends</div>
+          </button>
+        </div>
+        <p style="font-size:13px;font-weight:600;color:var(--gray-600);margin:16px 0 8px;">On a business basis</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;" id="biz-choices">
+          <button class="ob-choice selected" style="flex:1;min-width:140px;" onclick="selectChoice('biz','solo',this)">
+            <div class="ob-choice-emoji">🧑</div>
+            <div class="ob-choice-label">Solo / Self</div>
+          </button>
+          <button class="ob-choice" style="flex:1;min-width:140px;" onclick="selectChoice('biz','family',this)">
+            <div class="ob-choice-emoji">👨‍👩‍👧</div>
+            <div class="ob-choice-label">Family-run</div>
+          </button>
+          <button class="ob-choice" style="flex:1;min-width:140px;" onclick="selectChoice('biz','hire',this)">
+            <div class="ob-choice-emoji">👥</div>
+            <div class="ob-choice-label">Hire staff</div>
+          </button>
+        </div>
+      </div>
+      <div class="ob-footer">
+        <button class="btn btn-ghost btn-md" onclick="obBack()">← Back</button>
+        <button class="btn btn-primary btn-md" onclick="finishOnboarding()">Analyze My Business Potential 🎯</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔═══════════════════════════════════════════════════════╗
+     ║              DASHBOARD APP                           ║
+     ╚═══════════════════════════════════════════════════════╝ -->
+<div id="dashboard-screen">
+  <div class="app-wrap">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">🌿</div>
+        <span class="sidebar-logo-text">VyaparSathi</span>
+      </div>
+      <nav>
+        <div class="nav-group">
+          <p class="nav-group-label">Overview</p>
+          <button class="nav-item active" onclick="navTo('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</button>
+          <button class="nav-item" onclick="navTo('journey',this)"><span class="nav-icon">🗺️</span> Business Journey</button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-label">Plan</p>
+          <button class="nav-item" onclick="navTo('opp',this)"><span class="nav-icon">📍</span> Opportunities</button>
+          <button class="nav-item" onclick="navTo('feas',this)"><span class="nav-icon">📈</span> Feasibility</button>
+          <button class="nav-item" onclick="navTo('plan',this)"><span class="nav-icon">📋</span> Business Plan</button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-label">Fund</p>
+          <button class="nav-item" onclick="navTo('finance',this)"><span class="nav-icon">₹</span> Finance</button>
+          <button class="nav-item" onclick="navTo('schemes',this)"><span class="nav-icon">🏛️</span> Schemes &amp; Loans</button>
+          <button class="nav-item" onclick="navTo('launch',this)"><span class="nav-icon">🚀</span> Launch</button>
+        </div>
+        <div class="nav-group">
+          <p class="nav-group-label">Grow</p>
+          <button class="nav-item" onclick="navTo('doctor',this)"><span class="nav-icon">🩺</span> Business Doctor</button>
+          <button class="nav-item" onclick="navTo('health',this)"><span class="nav-icon">❤️</span> Business Health</button>
+          <button class="nav-item" onclick="navTo('sim',this)"><span class="nav-icon">🔬</span> Simulator</button>
+          <button class="nav-item" onclick="navTo('community',this)"><span class="nav-icon">👥</span> Community</button>
+        </div>
+      </nav>
+      <div class="sidebar-profile">
+        <button class="profile-card" onclick="navTo('settings',null)">
+          <div class="avatar" id="sidebar-avatar">P</div>
+          <div class="min-w-0 flex-1">
+            <div class="profile-name truncate" id="sidebar-name">Priya Sharma</div>
+            <div class="profile-sub truncate" id="sidebar-loc">Kolkata, West Bengal</div>
+          </div>
+          <span class="settings-icon">⚙️</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <button class="btn btn-ghost btn-sm" style="border-radius:10px;" id="back-btn" onclick="historyBack()">← Back</button>
+        <button class="btn btn-ghost btn-sm" style="border-radius:10px;" onclick="goHome()">🏠 Home</button>
+        <div class="search-bar hide-mobile">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search opportunities, schemes, mentors…" />
+        </div>
+        <div class="topbar-right">
+          <!-- Notifications -->
+          <div class="relative">
+            <button class="notif-btn" onclick="toggleDropdown('notif-dropdown')">
+              🔔
+              <span class="notif-badge">4</span>
+            </button>
+            <div class="dropdown-menu" id="notif-dropdown">
+              <div class="dropdown-header">
+                <h4>Notifications</h4>
+                <span class="chip chip-orange">4 new</span>
+              </div>
+              <button class="notif-item" onclick="navTo('schemes',null);closeDropdowns()">
+                <div class="notif-icon-wrap" style="background:var(--orange-50);color:var(--orange-600);">🏛️</div>
+                <div>
+                  <div class="notif-title">PMEGP window closing soon</div>
+                  <div class="notif-time">2h ago</div>
+                </div>
+              </button>
+              <button class="notif-item" onclick="navTo('health',null);closeDropdowns()">
+                <div class="notif-icon-wrap" style="background:var(--brand-50);color:var(--brand-700);">📈</div>
+                <div>
+                  <div class="notif-title">Business Health improved to 82/100</div>
+                  <div class="notif-time">1d ago</div>
+                </div>
+              </button>
+              <button class="notif-item" onclick="navTo('community',null);closeDropdowns()">
+                <div class="notif-icon-wrap" style="background:var(--purple-50);color:var(--purple-600);">💬</div>
+                <div>
+                  <div class="notif-title">New reply on your community question</div>
+                  <div class="notif-time">2d ago</div>
+                </div>
+              </button>
+              <button class="notif-item" onclick="navTo('opp',null);closeDropdowns()">
+                <div class="notif-icon-wrap" style="background:var(--blue-50);color:var(--blue-600);">✨</div>
+                <div>
+                  <div class="notif-title">AI found 2 new opportunities near you</div>
+                  <div class="notif-time">3d ago</div>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Profile -->
+          <div class="relative">
+            <div class="topbar-avatar" id="topbar-avatar" onclick="toggleDropdown('profile-dropdown')">P</div>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="avatar" id="profile-drop-avatar">P</div>
+                <div>
+                  <div class="profile-dropdown-name" id="profile-drop-name">Priya Sharma</div>
+                  <div class="profile-dropdown-sub" id="profile-drop-loc">Kolkata, West Bengal</div>
+                </div>
+              </div>
+              <div class="dropdown-menu-items">
+                <button class="dropdown-menu-item" onclick="goHome();closeDropdowns()">🏠 Home</button>
+                <button class="dropdown-menu-item" onclick="navTo('settings',null);closeDropdowns()">⚙️ Settings</button>
+                <button class="dropdown-menu-item" onclick="toggleLangSwitcher()">🌐 Language <span id="cur-lang-label" style="margin-left:auto;font-size:11px;color:var(--gray-400);">English</span></button>
+                <div id="lang-switcher-inline" style="display:none;background:var(--gray-50);border-radius:10px;padding:6px;margin:4px 0;">
+                  <button class="lang-option active" onclick="setLang('en','English');closeLangSwitcher()">English</button>
+                  <button class="lang-option" onclick="setLang('hi','हिन्दी');closeLangSwitcher()">हिन्दी (Hindi)</button>
+                  <button class="lang-option" onclick="setLang('bn','বাংলা');closeLangSwitcher()">বাংলা (Bengali)</button>
+                </div>
+                <hr class="dropdown-divider" />
+                <button class="dropdown-menu-item danger" onclick="showLanding()">⬅️ Log out</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page content -->
+      <div class="page-content">
+        <!-- Dashboard page -->
+        <div id="page-dashboard">
+          <h1 style="font-family:'Lexend',sans-serif;font-size:28px;font-weight:800;color:var(--gray-900);">Hello, <span id="dash-name">Priya</span> 👋</h1>
+          <p style="color:var(--gray-500);margin-top:4px;margin-bottom:24px;">Here is your business journey today.</p>
+
+          <!-- Journey tracker -->
+          <div class="card" style="padding:20px;margin-bottom:20px;">
+            <div class="tracker-steps" id="tracker-steps">
+              <!-- Filled by JS -->
+            </div>
+            <div class="tracker-footer">
+              <p>You're on <strong>Feasibility</strong>. Next up: Business Plan.</p>
+              <button class="btn btn-primary btn-sm" onclick="navTo('plan',null)">Continue to Business Plan →</button>
+            </div>
+          </div>
+
+          <!-- Score + Suggested business -->
+          <div class="dash-grid" style="margin-bottom:20px;">
+            <!-- Score ring card -->
+            <div class="card p-6" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+              <p style="font-size:13px;font-weight:600;color:var(--gray-500);margin-bottom:12px;">Best Opportunity Score</p>
+              <div id="score-ring-container"><!-- SVG ring --></div>
+              <p style="font-size:14px;font-weight:700;color:var(--gray-900);margin:10px 0 8px;" id="score-biz-name">Affordable Cloud Kitchen</p>
+              <span class="chip chip-green">📍 <span id="score-location">Kolkata</span></span>
+            </div>
+
+            <!-- Suggested business -->
+            <div class="card p-6">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;">
+                <div>
+                  <p style="font-size:13px;font-weight:600;color:var(--gray-500);">Suggested Business</p>
+                  <h3 style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;color:var(--gray-900);margin-top:2px;" id="dash-biz-name">Affordable Cloud Kitchen</h3>
+                  <span class="chip chip-green" style="margin-top:6px;" id="interest-badge">✦ Matches your interest</span>
+                </div>
+                <div style="background:var(--brand-50);border-radius:12px;padding:10px 14px;text-align:center;flex-shrink:0;">
+                  <div style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;color:var(--brand-700);" id="dash-score">89</div>
+                  <div style="font-size:10px;color:var(--brand-600);">score</div>
+                </div>
+              </div>
+              <div class="stat-grid-4" style="margin-bottom:16px;">
+                <div class="stat-block"><p>Investment</p><p id="dash-invest">₹1.50 L</p></div>
+                <div class="stat-block"><p>Est. Profit</p><p id="dash-profit">₹35K/mo</p></div>
+                <div class="stat-block"><p>Demand</p><div id="dash-demand" class="mt-1"><span class="level-badge level-high-pos">High</span></div></div>
+                <div class="stat-block"><p>Competition</p><div id="dash-comp" class="mt-1"><span class="level-badge level-med-neg">Medium</span></div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+                <button class="btn btn-primary btn-sm" onclick="navTo('feas',null)">Check Feasibility →</button>
+                <button class="btn btn-outline btn-sm" onclick="navTo('plan',null)">Create Business Plan</button>
+              </div>
+              <div style="border-top:1px solid var(--gray-100);padding-top:16px;">
+                <p style="font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;">More options for you</p>
+                <div class="space-y-3" id="opp-options"><!-- filled by JS --></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Budget card -->
+          <div class="card p-6" style="margin-bottom:20px;">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;">
+              <div>
+                <p style="font-size:13px;font-weight:600;color:var(--gray-500);">Your Budget vs This Business</p>
+                <h3 style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;color:var(--gray-900);margin-top:2px;" id="budget-biz-name">Affordable Cloud Kitchen</h3>
+              </div>
+              <span class="level-badge" id="budget-fit-badge" style="padding:5px 14px;font-size:13px;">Within your budget</span>
+            </div>
+            <div class="stat-grid-4" style="margin-bottom:16px;">
+              <div class="stat-block"><p>Your budget</p><p id="b-budget">₹3,00,000</p></div>
+              <div class="stat-block"><p>Investment needed</p><p id="b-invest">₹1,50,000</p></div>
+              <div class="stat-block"><p>Buffer left</p><p id="b-surplus">₹1,50,000</p></div>
+              <div class="stat-block"><p>Est. break-even</p><p id="b-breakeven">5 mo</p></div>
+            </div>
+            <div class="budget-bar-wrap">
+              <div class="budget-bar-header"><span>Budget used</span><span id="b-pct">50%</span></div>
+              <div class="budget-bar-track"><div class="budget-bar-fill" id="budget-bar" style="width:50%;"></div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;" class="fund-grid">
+              <div class="fund-line">
+                <div class="fund-line-label"><div class="fund-dot" style="background:#039855;"></div>Own funds</div>
+                <div class="fund-val" id="f-own">₹1,50,000</div>
+              </div>
+              <div class="fund-line">
+                <div class="fund-line-label"><div class="fund-dot" style="background:#7c3aed;"></div>Suggested subsidy (~35%)</div>
+                <div class="fund-val" id="f-subsidy">₹52,500</div>
+              </div>
+              <div class="fund-line">
+                <div class="fund-line-label"><div class="fund-dot" style="background:#f97316;"></div>Loan needed</div>
+                <div class="fund-val" id="f-loan">₹0</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--gray-100);margin-top:20px;padding-top:16px;">
+              <p style="font-size:13px;color:var(--gray-500);">Projected ROI <strong style="color:var(--brand-700);" id="b-roi">280%</strong> / year on <span id="b-invest-2">₹1,50,000</span>.</p>
+              <button class="btn btn-outline btn-sm" onclick="navTo('finance',null)">Structure funding →</button>
+            </div>
+          </div>
+
+          <!-- Health + Revenue + Scheme + AI -->
+          <div class="dash-grid-2" style="margin-bottom:20px;">
+            <div class="card p-6" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+              <p style="font-size:13px;font-weight:600;color:var(--gray-500);margin-bottom:12px;">Business Health</p>
+              <div id="health-ring-container"></div>
+              <button class="btn btn-outline btn-sm" style="margin-top:16px;" onclick="navTo('health',null)">View Dashboard</button>
+            </div>
+            <div class="card p-6">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <div>
+                  <p style="font-size:13px;font-weight:600;color:var(--gray-500);">Revenue Trend</p>
+                  <p style="font-family:'Lexend',sans-serif;font-size:24px;font-weight:800;color:var(--gray-900);">₹91,000</p>
+                </div>
+                <span class="chip chip-green">📈 +11% this month</span>
+              </div>
+              <!-- Mini sparkline chart -->
+              <div class="mini-chart">
+                <svg class="mini-chart-line" viewBox="0 0 300 80" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#039855" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="#039855" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 65 L 50 55 L 100 45 L 150 35 L 200 22 L 250 12 L 300 5" stroke="#039855" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                  <path d="M 0 65 L 50 55 L 100 45 L 150 35 L 200 22 L 250 12 L 300 5 L 300 80 L 0 80 Z" fill="url(#sparkGrad)"/>
+                </svg>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-400);margin-top:6px;">
+                <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-grid-2">
+            <div class="card p-6">
+              <div class="scheme-card">
+                <div class="scheme-icon">🏛️</div>
+                <div>
+                  <p style="font-size:13px;font-weight:600;color:var(--gray-500);">Recommended Scheme</p>
+                  <h3 style="font-size:15px;font-weight:700;color:var(--gray-900);">PMEGP — 92% eligibility match</h3>
+                </div>
+              </div>
+              <p style="font-size:13px;color:var(--gray-600);line-height:1.6;margin:12px 0;">Up to 35% subsidy on project cost for new micro-enterprises. Strong fit for your budget and category.</p>
+              <button class="btn btn-outline btn-sm" onclick="navTo('schemes',null)">View eligible schemes →</button>
+            </div>
+            <div>
+              <div class="ai-callout">
+                <div class="ai-callout-icon">✨</div>
+                <p id="ai-callout-text">Affordable Cloud Kitchen is a strong fit for Kolkata — high demand with medium competition. Starting lean keeps costs low and break-even near 5 months.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Other pages (placeholder) -->
+        <div id="page-other" style="display:none;">
+          <div class="card p-6" style="text-align:center;padding:60px 40px;">
+            <div style="font-size:48px;margin-bottom:16px;" id="other-icon">📊</div>
+            <h2 style="font-family:'Lexend',sans-serif;font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:8px;" id="other-title">Page</h2>
+            <p style="font-size:14px;color:var(--gray-500);max-width:360px;margin:0 auto 24px;" id="other-desc">This section is part of the full React application. Use the navigation to explore.</p>
+            <button class="btn btn-primary btn-md" onclick="goHome()">🏠 Back to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

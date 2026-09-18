@@ -3,6 +3,7 @@
     --brand-50:  #ecfdf5;
     --brand-100: #d1fae5;
     --brand-200: #a7f3d0;
+    --brand-300: #86d9b9;
     --brand-400: #34d399;
     --brand-500: #10b981;
     --brand-600: #059669;
@@ -460,7 +461,7 @@
   /* Journey tracker */
   .journey-tracker { padding: 20px; }
   .tracker-steps { display: flex; align-items: center; overflow-x: auto; padding-bottom: 4px; }
-  .tracker-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 80px; cursor: pointer; }
+  .tracker-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 80px; cursor: pointer; background: transparent; padding: 4px; appearance: none; }
   .step-circle {
     width: 36px; height: 36px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;

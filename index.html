@@ -344,27 +344,27 @@
       <nav>
         <div class="nav-group">
           <p class="nav-group-label">Overview</p>
-          <button class="nav-item active" onclick="navTo('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</button>
-          <button class="nav-item" onclick="navTo('journey',this)"><span class="nav-icon">🗺️</span> Business Journey</button>
+          <button class="nav-item active" onclick="navTo('dashboard',this)" data-page="dashboard"><span class="nav-icon">📊</span> Dashboard</button>
+          <button class="nav-item" onclick="navTo('journey',this)" data-page="journey"><span class="nav-icon">🗺️</span> Business Journey</button>
         </div>
         <div class="nav-group">
           <p class="nav-group-label">Plan</p>
-          <button class="nav-item" onclick="navTo('opp',this)"><span class="nav-icon">📍</span> Opportunities</button>
-          <button class="nav-item" onclick="navTo('feas',this)"><span class="nav-icon">📈</span> Feasibility</button>
-          <button class="nav-item" onclick="navTo('plan',this)"><span class="nav-icon">📋</span> Business Plan</button>
+          <button class="nav-item" onclick="navTo('opp',this)" data-page="opp"><span class="nav-icon">📍</span> Opportunities</button>
+          <button class="nav-item" onclick="navTo('feas',this)" data-page="feas"><span class="nav-icon">📈</span> Feasibility</button>
+          <button class="nav-item" onclick="navTo('plan',this)" data-page="plan"><span class="nav-icon">📋</span> Business Plan</button>
         </div>
         <div class="nav-group">
           <p class="nav-group-label">Fund</p>
-          <button class="nav-item" onclick="navTo('finance',this)"><span class="nav-icon">₹</span> Finance</button>
-          <button class="nav-item" onclick="navTo('schemes',this)"><span class="nav-icon">🏛️</span> Schemes &amp; Loans</button>
-          <button class="nav-item" onclick="navTo('launch',this)"><span class="nav-icon">🚀</span> Launch</button>
+          <button class="nav-item" onclick="navTo('finance',this)" data-page="finance"><span class="nav-icon">₹</span> Finance</button>
+          <button class="nav-item" onclick="navTo('schemes',this)" data-page="schemes"><span class="nav-icon">🏛️</span> Schemes &amp; Loans</button>
+          <button class="nav-item" onclick="navTo('launch',this)" data-page="launch"><span class="nav-icon">🚀</span> Launch</button>
         </div>
         <div class="nav-group">
           <p class="nav-group-label">Grow</p>
-          <button class="nav-item" onclick="navTo('doctor',this)"><span class="nav-icon">🩺</span> Business Doctor</button>
-          <button class="nav-item" onclick="navTo('health',this)"><span class="nav-icon">❤️</span> Business Health</button>
-          <button class="nav-item" onclick="navTo('sim',this)"><span class="nav-icon">🔬</span> Simulator</button>
-          <button class="nav-item" onclick="navTo('community',this)"><span class="nav-icon">👥</span> Community</button>
+          <button class="nav-item" onclick="navTo('doctor',this)" data-page="doctor"><span class="nav-icon">🩺</span> Business Doctor</button>
+          <button class="nav-item" onclick="navTo('health',this)" data-page="health"><span class="nav-icon">❤️</span> Business Health</button>
+          <button class="nav-item" onclick="navTo('sim',this)" data-page="sim"><span class="nav-icon">🔬</span> Simulator</button>
+          <button class="nav-item" onclick="navTo('community',this)" data-page="community"><span class="nav-icon">👥</span> Community</button>
         </div>
       </nav>
       <div class="sidebar-profile">
@@ -462,7 +462,7 @@
       <!-- Page content -->
       <div class="page-content">
         <!-- Dashboard page -->
-        <div id="page-dashboard">
+        <div id="page-dashboard" class="app-page">
           <h1 style="font-family:'Lexend',sans-serif;font-size:28px;font-weight:800;color:var(--gray-900);">Hello, <span id="dash-name">Priya</span> 👋</h1>
           <p style="color:var(--gray-500);margin-top:4px;margin-bottom:24px;">Here is your business journey today.</p>
 
@@ -611,13 +611,224 @@
           </div>
         </div>
 
-        <!-- Other pages (placeholder) -->
-        <div id="page-other" style="display:none;">
-          <div class="card p-6" style="text-align:center;padding:60px 40px;">
-            <div style="font-size:48px;margin-bottom:16px;" id="other-icon">📊</div>
-            <h2 style="font-family:'Lexend',sans-serif;font-size:22px;font-weight:800;color:var(--gray-900);margin-bottom:8px;" id="other-title">Page</h2>
-            <p style="font-size:14px;color:var(--gray-500);max-width:360px;margin:0 auto 24px;" id="other-desc">This section is part of the full React application. Use the navigation to explore.</p>
-            <button class="btn btn-primary btn-md" onclick="goHome()">🏠 Back to Dashboard</button>
+        <!-- Opportunities -->
+        <div id="page-opp" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey · Step 1</div>
+            <h1>Opportunities</h1>
+            <p>Hyper-local business ideas ranked for your budget and interests.</p>
+          </div>
+          <div id="opp-page-list"></div>
+        </div>
+
+        <!-- Feasibility Analysis -->
+        <div id="page-feas" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey · Step 2</div>
+            <h1>Feasibility Analysis</h1>
+            <p>AI-powered feasibility score for <span id="feas-biz-name">your business</span>.</p>
+          </div>
+          <div class="dash-grid-3">
+            <div class="card" style="padding:24px;text-align:center;display:flex;align-items:center;justify-content:center;">
+              <div id="feas-score-ring"></div>
+            </div>
+            <div class="card" style="padding:24px;">
+              <div id="feas-metrics"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Plan -->
+        <div id="page-plan" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey · Step 3</div>
+            <h1>Business Plan</h1>
+            <p>Auto-generated plan for <span id="plan-biz-name">your business</span>.</p>
+          </div>
+          <div class="card" style="padding:24px;margin-bottom:16px;">
+            <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;">Executive Summary</h3>
+            <p id="plan-summary" style="font-size:13px;color:var(--gray-700);line-height:1.7;"></p>
+          </div>
+          <div class="dash-grid-2" style="margin-bottom:16px;">
+            <div class="card" style="padding:24px;">
+              <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;">Target Customer</h3>
+              <p id="plan-customer" style="font-size:13px;color:var(--gray-700);line-height:1.7;"></p>
+            </div>
+            <div class="card" style="padding:24px;">
+              <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;">Revenue Model</h3>
+              <p id="plan-revenue" style="font-size:13px;color:var(--gray-700);line-height:1.7;"></p>
+            </div>
+          </div>
+          <div class="card" style="padding:24px;margin-bottom:16px;">
+            <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;">Cost Breakdown</h3>
+            <p id="plan-costs" style="font-size:13px;color:var(--gray-700);line-height:1.7;"></p>
+          </div>
+          <div class="card" style="padding:24px;">
+            <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;">Milestones</h3>
+            <div id="plan-milestones"></div>
+          </div>
+        </div>
+
+        <!-- Finance & Funding -->
+        <div id="page-finance" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey · Step 4</div>
+            <h1>Finance &amp; Funding</h1>
+            <p>Budget planning and funding mix for <span id="fin-biz-name">your business</span>.</p>
+          </div>
+          <div class="dash-grid-2" style="margin-bottom:16px;">
+            <div class="preview-stat">
+              <div style="font-size:11px;color:var(--gray-500);">Your budget</div>
+              <div id="fin-budget" style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;"></div>
+            </div>
+            <div class="preview-stat">
+              <div style="font-size:11px;color:var(--gray-500);">Required investment</div>
+              <div id="fin-investment" style="font-family:'Lexend',sans-serif;font-size:20px;font-weight:800;"></div>
+            </div>
+          </div>
+          <div class="card" style="padding:24px;margin-bottom:16px;">
+            <h3 style="font-family:'Lexend',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;">Funding Mix</h3>
+            <div class="fin-mix-bar" id="fin-mix-bar"></div>
+            <div class="fin-mix-legend" id="fin-mix-legend"></div>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <div class="preview-stat" style="flex:1;min-width:130px;">
+              <div style="font-size:11px;color:var(--gray-500);">Own funds</div>
+              <div id="fin-own" style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;"></div>
+            </div>
+            <div class="preview-stat" style="flex:1;min-width:130px;">
+              <div style="font-size:11px;color:var(--gray-500);">Subsidy</div>
+              <div id="fin-subsidy" style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;"></div>
+            </div>
+            <div class="preview-stat" style="flex:1;min-width:130px;">
+              <div style="font-size:11px;color:var(--gray-500);">Loan needed</div>
+              <div id="fin-loan" style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;"></div>
+            </div>
+            <div class="preview-stat" style="flex:1;min-width:130px;">
+              <div style="font-size:11px;color:var(--gray-500);">Annual ROI</div>
+              <div id="fin-roi" style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;"></div>
+            </div>
+            <div class="preview-stat" style="flex:1;min-width:130px;">
+              <div style="font-size:11px;color:var(--gray-500);">Break-even</div>
+              <div id="fin-breakeven" style="font-family:'Lexend',sans-serif;font-size:17px;font-weight:800;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schemes & Loans -->
+        <div id="page-schemes" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey</div>
+            <h1>Schemes &amp; Loans</h1>
+            <p>Government schemes you may be eligible for — PMEGP, MUDRA and more.</p>
+          </div>
+          <div id="schemes-list"></div>
+        </div>
+
+        <!-- Launch Checklist -->
+        <div id="page-launch" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Business Journey · Step 5</div>
+            <h1>Launch Checklist</h1>
+            <p>Step-by-step checklist to go live confidently.</p>
+          </div>
+          <div class="card" style="padding:20px;margin-bottom:16px;">
+            <div class="budget-bar-track" style="margin-bottom:8px;"><div class="budget-bar-fill" id="launch-progress-bar" style="width:0%;"></div></div>
+            <div id="launch-progress-pct" style="font-size:12px;color:var(--gray-500);"></div>
+          </div>
+          <div id="launch-list"></div>
+        </div>
+
+        <!-- Business Doctor -->
+        <div id="page-doctor" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">AI Advisory</div>
+            <h1>Business Doctor</h1>
+            <p>Diagnose what is slowing your business and get AI prescriptions.</p>
+          </div>
+          <div class="card" style="padding:20px;margin-bottom:16px;">
+            <h3 style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:700;margin-bottom:10px;">What's slowing you down? Select all that apply.</h3>
+            <div id="doctor-symptoms"></div>
+          </div>
+          <div id="doctor-results"></div>
+        </div>
+
+        <!-- Business Health -->
+        <div id="page-health" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">AI Advisory</div>
+            <h1>Business Health</h1>
+            <p>Real-time health score across sales, finance, growth and risk.</p>
+          </div>
+          <div class="dash-grid-3">
+            <div class="card" style="padding:24px;text-align:center;display:flex;align-items:center;justify-content:center;">
+              <div id="health-page-ring"></div>
+            </div>
+            <div class="card" style="padding:24px;">
+              <div id="health-breakdown"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulator -->
+        <div id="page-sim" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">AI Advisory</div>
+            <h1>Simulator</h1>
+            <p>Simulate revenue, pricing and growth scenarios.</p>
+          </div>
+          <div class="card" style="padding:24px;margin-bottom:16px;">
+            <div class="slider-row">
+              <div class="slider-row-label"><span>Price per unit</span><span id="sim-price-label"></span></div>
+              <input type="range" min="10" max="1000" step="10" id="sim-price-input" oninput="updateSimResults()">
+            </div>
+            <div class="slider-row">
+              <div class="slider-row-label"><span>Units sold per month</span><span id="sim-units-label"></span></div>
+              <input type="range" min="10" max="2000" step="10" id="sim-units-input" oninput="updateSimResults()">
+            </div>
+            <div class="slider-row">
+              <div class="slider-row-label"><span>Cost per unit</span><span id="sim-cost-label"></span></div>
+              <input type="range" min="5" max="900" step="5" id="sim-cost-input" oninput="updateSimResults()">
+            </div>
+          </div>
+          <div class="sim-result-grid">
+            <div class="sim-result-box"><div class="sim-result-label">Monthly Revenue</div><div class="sim-result-value" id="sim-revenue"></div></div>
+            <div class="sim-result-box"><div class="sim-result-label">Monthly Cost</div><div class="sim-result-value" id="sim-cost-total"></div></div>
+            <div class="sim-result-box"><div class="sim-result-label">Monthly Profit</div><div class="sim-result-value" id="sim-profit"></div></div>
+            <div class="sim-result-box"><div class="sim-result-label">Profit Margin</div><div class="sim-result-value" id="sim-margin"></div></div>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div id="page-community" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Community</div>
+            <h1>Community</h1>
+            <p>Connect with entrepreneurs, get mentors and share experiences.</p>
+          </div>
+          <div class="community-input-row">
+            <input type="text" id="community-post-input" placeholder="Share something with the community...">
+            <button class="btn btn-primary btn-sm" onclick="postCommunityMessage()">Post</button>
+          </div>
+          <div id="community-list"></div>
+        </div>
+
+        <!-- Settings -->
+        <div id="page-settings" style="display:none;">
+          <div class="page-header">
+            <div class="page-header-kicker">Account</div>
+            <h1>Settings</h1>
+            <p>Manage your profile, language, and preferences.</p>
+          </div>
+          <div class="card" style="padding:24px;max-width:480px;">
+            <label class="ob-label">Full name</label>
+            <input type="text" class="ob-input" id="settings-name-input">
+            <label class="ob-label">Location</label>
+            <input type="text" class="ob-input" id="settings-loc-input">
+            <label class="ob-label">Budget (₹)</label>
+            <input type="number" class="ob-input" id="settings-budget-input">
+            <button class="btn btn-primary btn-md" onclick="saveSettings()">Save changes</button>
+            <span class="settings-saved-badge" id="settings-saved-msg">Saved ✓</span>
           </div>
         </div>
       </div>
